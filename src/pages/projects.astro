@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    id: 1,
+    name: '個人網站',
+    description: '使用 Vue 3 和 Express.js 開發的個人網站，具有留言板和視頻展示功能。深色主題設計，完整的響應式布局，並實作了完整的安全性防護。這是一個開源專案',
+    tags: ['Vue 3', 'Express.js', 'Node.js', 'Vuestic UI', 'Open Source'],
+    github: 'https://github.com/kjyang-0114/KJyang-website',
+    demo: null,
+    featured: true
+  },
+  {
+    id: 2,
+    name: 'BridgeMaster',
+    description: '一個優化建橋控制和操作的Minecraft Forge模組 簡稱速疊',
+    tags: ['Java', 'Game Development', 'Minecraft Mod', 'Open Source'],
+    github: 'https://github.com/KJyang-0114/BridgeMaster',
+    demo: null,
+    featured: true
+  },
+  {
+    id: 3,
+    name: 'Element Remover Pro',
+    description: '一個 JavaScript 瀏覽器擴充功能，用於移除網頁上不需要的元素。支援點擊選擇要移除的元素，並可以保存設定',
+    tags: ['JavaScript', 'Browser Extension', 'DOM Manipulation', 'Open Source'],
+    github: 'https://github.com/KJyang-0114/element-remover-pro',
+    demo: null,
+    featured: true
+  },
+  {
+    id: 4,
+    name: '個人網站 (Astro 版)',
+    description: '使用 Astro 框架重新開發的個人網站，擁有更快的頁面載入速度和改進的使用者體驗。',
+    tags: ['Astro', 'JavaScript', 'CSS', 'Static Site Generation'],
+    github: 'https://github.com/kjyang-0114/kjyang-astro',
+    demo: null,
+    featured: false
+  }
+];
+---
+
+<Layout title="作品集 | KJYang" description="KJYang 的程式作品集 - 開源專案、網頁應用程式、Minecraft 模組等">
+  <div class="projects-container">
+    <header class="page-header">
+      <h1 class="page-title">作品集</h1>
+      <p class="page-subtitle">這裡展示了我的一些程式設計作品</p>
+    </header>
+
+    <div class="projects-content">
+      <div class="projects-grid">
+        {projects.map(project => (
+          <ProjectCard
+            name={project.name}
+            description={project.description}
+            tags={project.tags}
+            github={project.github}
+            demo={project.demo}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-container {
+      padding: 1rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

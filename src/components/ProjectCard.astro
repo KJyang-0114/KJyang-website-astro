@@ -1,0 +1,100 @@
+---
+export interface Props {
+  name: string;
+  description: string;
+  tags: string[];
+  github?: string | null;
+  demo?: string | null;
+}
+
+const { name, description, tags, github, demo } = Astro.props;
+---
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">{name}</h3>
+    <div class="project-links">
+      {demo && (
+        <a href={demo} target="_blank" class="project-link" aria-label="Live demo">
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      )}
+      {github && (
+        <a href={github} target="_blank" class="project-link" aria-label="GitHub repository">
+          <i class="fab fa-github"></i>
+        </a>
+      )}
+    </div>
+  </div>
+  <p class="project-description">{description}</p>
+  <div class="project-tags">
+    {tags.map((tag) => (
+      <span class="project-tag">{tag}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .project-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .project-link {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .project-link:hover {
+    color: var(--primary-color);
+  }
+
+  .project-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .project-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+</style>

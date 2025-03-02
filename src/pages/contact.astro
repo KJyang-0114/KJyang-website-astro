@@ -1,0 +1,331 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="聯絡我 | KJYang" description="與高中生程式設計師 KJYang 聯絡 - 社群媒體與留言">
+  <div class="contact-container">
+    <header class="page-header">
+      <h1 class="page-title">聯繫我</h1>
+      <p class="page-subtitle">你勇敢的跨出了計劃合作的第一步 (或是來報Bug的?)</p>
+    </header>
+
+    <div class="contact-content">
+      <section class="contact-section">
+        <h2 class="section-title">社交媒體</h2>
+        <p class="section-desc">在這個數位宇宙中，找到我的方式有很多種 👽</p>
+        <div class="social-links">
+          <a href="https://github.com/kjyang-0114" target="_blank" class="social-link">
+            <div class="social-icon github">
+              <i class="fab fa-github"></i>
+            </div>
+            <span class="social-text">GitHub</span>
+            <span class="social-desc">看看我那些充滿註釋的代碼</span>
+          </a>
+          <a href="https://www.instagram.com/kjyang_0114/" target="_blank" class="social-link">
+            <div class="social-icon instagram">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <span class="social-text">Instagram</span>
+            <span class="social-desc">生活日常，偶爾曬一下代碼</span>
+          </a>
+          <a href="https://discord.gg/sZbn6Dw3Bx" target="_blank" class="social-link">
+            <div class="social-icon discord">
+              <i class="fab fa-discord"></i>
+            </div>
+            <span class="social-text">Discord</span>
+            <span class="social-desc">來吐槽我的程式或聊聊天吧</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <h2 class="section-title">找我聊天</h2>
+        <div class="direct-contact">
+          <div class="contact-card discord-card">
+            <div class="contact-icon">
+              <i class="fab fa-discord"></i>
+            </div>
+            <div class="contact-info">
+              <h3>Discord</h3>
+              <p>我的ID: <span>kjyang</span></p>
+              <p class="fun-text">加我好友的時候請備註「網站來的」，不然我可能會把你誤認為是推銷Python課程的機器人 🤖</p>
+            </div>
+          </div>
+          
+          <div class="humor-box">
+            <h3 class="humor-title">為什麼要聯絡我？</h3>
+            <ul class="humor-list">
+              <li>🐛 你發現了我程式中的一個Bug（謝謝，但我可能會假裝那是個「特性」）</li>
+              <li>💼 你有個專案想邀請我合作（我很樂意，只要不是幫你寫作業）</li>
+              <li>🎮 你想找人一起打遊戲（取決於你玩什麼，如果是Minecraft我立刻在線）</li>
+              <li>🍕 你想請我吃披薩（這個最好，我立即回應）</li>
+              <li>👨‍💻 你只是想和另一個程式愛好者聊聊天（歡迎，我們可以一起抱怨JavaScript）</li>
+            </ul>
+          </div>
+          
+          <p class="contact-note">
+            如果我沒有立即回覆，可能是因為：<br>
+            1. 正在和一個頑固的Bug戰鬥 👊<br>
+            2. 學校作業堆積如山 📚<br>
+            3. 我的貓坐在了鍵盤上 🐱<br>
+            (好吧，我沒有貓，但如果這是不回覆的好藉口，那我或許該養一隻)
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+  }
+
+  .contact-content {
+    display: grid;
+    gap: 4rem;
+  }
+
+  .contact-section {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .social-link {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all var(--transition-normal);
+    height: 100%;
+  }
+
+  .social-link:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .social-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .github {
+    background: #333;
+    color: white;
+  }
+
+  .instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+  }
+
+  .discord {
+    background: #7289da;
+    color: white;
+  }
+  
+  .direct-contact {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-normal);
+  }
+  
+  .discord-card {
+    border-left: 4px solid #7289da;
+  }
+  
+  .contact-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    flex-shrink: 0;
+  }
+  
+  .contact-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  .contact-info span {
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+  
+  .fun-text {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  
+  .humor-box {
+    padding: 1.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--accent-color);
+  }
+  
+  .humor-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+  
+  .humor-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  
+  .humor-list li {
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.5;
+    transition: transform 0.2s ease;
+  }
+  
+  .humor-list li:hover {
+    transform: translateX(5px);
+    color: var(--text-color);
+  }
+  
+  .contact-note {
+    padding: 1.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: var(--border-radius);
+    color: var(--text-muted);
+    line-height: 1.8;
+    border-left: 4px solid var(--primary-color);
+  }
+
+  @media (max-width: 768px) {
+    .contact-container {
+      padding: 1rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .social-links {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-card {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+    
+    .humor-list li {
+      padding-left: 0.5rem;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

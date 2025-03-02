@@ -1,0 +1,127 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "高中生程式設計師的個人網站 - 分享程式開發和學習之旅" } = Astro.props;
+
+// 生成版本號以防止快取問題
+const version = Date.now();
+---
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href={`/favicon.svg?v=${version}`} />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- SEO 標籤 -->
+    <meta name="author" content="KJYang" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KJYang 個人網站" />
+    
+    <!-- 防止快取問題 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="site-container">
+      <Navigation />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<script>
+  // 修復可能的閃爍問題
+  document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.classList.add('loaded');
+  });
+
+  // 檢測頁面載入完成後應用動畫效果
+  document.addEventListener('DOMContentLoaded', () => {
+    // 使用 Intersection Observer 實現滾動顯示動畫
+    const animateElements = document.querySelectorAll('.fade-in, h1, h2, .section-title, .animate-on-scroll');
+    
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      animateElements.forEach(el => {
+        el.classList.add('animate-element');
+        observer.observe(el);
+      });
+    } else {
+      // 瀏覽器不支援 Intersection Observer 時的備用方案
+      animateElements.forEach(el => {
+        el.classList.add('visible');
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  /* 避免在全域樣式檔中重複定義，這裡定義與動畫相關的樣式 */
+  .animate-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 確保容器結構正確 */
+  .site-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  main {
+    flex: 1;
+    width: 100%;
+  }
+
+  /* 防止頁面跳動 */
+  html.loaded {
+    height: 100%;
+    overflow-y: scroll;
+  }
+  
+  .no-transitions * {
+    transition: none !important;
+  }
+</style>

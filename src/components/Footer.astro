@@ -1,0 +1,204 @@
+---
+const currentYear = new Date().getFullYear();
+
+// 隨機程式幽默語錄
+const programmerQuotes = [
+  "以幽默的態度面對我寫的每一行代碼 💻",
+  "成功的程式碼：那些我昨天還看不懂但今天居然能運行的東西 🤯",
+  "每個Bug都是一個小探險，只是有時候探險太長了 🐛",
+  "在編程的世界裡，我是解決問題的人，也是製造問題的人 🔄",
+  "用代碼寫出的，都是些Bug以外的東西 👾"
+];
+
+// 隨機選擇一個語錄
+const randomQuote = programmerQuotes[Math.floor(Math.random() * programmerQuotes.length)];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <a href="/">KJ<span>Y</span>ang</a>
+        <p class="footer-tagline">用程式碼創造事物，一些有點兒問題的事物 😆</p>
+      </div>
+      
+      <div class="footer-links">
+        <div class="footer-section">
+          <h3>導航</h3>
+          <ul>
+            <li><a href="/">首頁</a></li>
+            <li><a href="/about">關於我</a></li>
+            <li><a href="/projects">作品集</a></li>
+            <li><a href="/contact">聯絡我</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>社群媒體</h3>
+          <div class="social-icons">
+            <a href="https://github.com/kjyang-0114" target="_blank" aria-label="GitHub" title="我的代碼庫 (很多Bug的家)">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/kjyang_0114/" target="_blank" aria-label="Instagram" title="看看我平時都在幹嘛">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://discord.gg/sZbn6Dw3Bx" target="_blank" aria-label="Discord" title="來Discord一起聊天">
+              <i class="fab fa-discord"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© {currentYear} KJYang. 所有程式碼共用溝通創意-相同方式分享 4.0 國際 (CC BY-SA 4.0)。</p>
+      <p class="footer-quote">{randomQuote}</p>
+      <p class="footer-credits">本網站由大量咖啡和熬夜催生而成 ☕</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--footer-background);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+  
+  .footer-logo a {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  
+  .footer-logo span {
+    color: var(--primary-color);
+  }
+  
+  .footer-tagline {
+    margin-top: 1rem;
+    color: var(--text-muted);
+    max-width: 350px;
+  }
+  
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+˙
+     color: var(--text-color);
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.8rem;
+  }
+  
+  .footer-section ul a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+    position: relative;
+    padding-left: 0;
+    transition: padding-left 0.2s ease, color 0.2s ease;
+  }
+  
+  .footer-section ul a:hover {
+    color: var(--primary-color);
+    padding-left: 8px;
+  }
+  
+  .footer-section ul a:hover::before {
+    content: '>';
+    position: absolute;
+    left: -8px;
+    color: var(--primary-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: all var(--transition-normal);
+  }
+  
+  .social-icons a:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px) rotate(8deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  
+  .footer-quote {
+    margin-top: 1rem;
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+  
+  .footer-credits {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .footer-links {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-tagline {
+      max-width: 100%;
+    }
+  }
+</style>
