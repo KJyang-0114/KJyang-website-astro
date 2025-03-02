@@ -8,6 +8,18 @@ export default defineConfig({
   build: {
     assets: '_assets'
   },
+  server: {
+    host: true, // 允許從網絡訪問
+    port: 3000, // 指定端口為3000
+    open: false, // 不自動打開瀏覽器
+    allowedHosts: ['kjyang0114.site', 'localhost', '127.0.0.1'] // 允許這些主機訪問
+  },
+  preview: {
+    host: true, // 允許從網絡訪問
+    port: 3000, // 指定端口為3000
+    open: false, // 不自動打開瀏覽器
+    allowedHosts: ['kjyang0114.site', 'localhost', '127.0.0.1'] // 允許這些主機訪問
+  },
   vite: {
     build: {
       cssCodeSplit: true
@@ -17,6 +29,10 @@ export default defineConfig({
     },
     ssr: {
       noExternal: ['@fontsource/*']
+    },
+    preview: {
+      // 在Vite層面也設置allowedHosts
+      allowedHosts: ['kjyang0114.site', 'localhost', '127.0.0.1']
     }
   }
 });
