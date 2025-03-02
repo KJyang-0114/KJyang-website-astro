@@ -31,8 +31,17 @@ export default defineConfig({
       noExternal: ['@fontsource/*']
     },
     preview: {
-      // 在Vite層面也設置allowedHosts
+      host: true, // 監聽所有可用網絡接口
+      port: 3000,
       allowedHosts: ['kjyang0114.site', 'localhost', '127.0.0.1']
+    },
+    server: {
+      host: true, // 監聽所有可用網絡接口
+      cors: true,
+      // 確保開發服務器也允許該主機
+      fs: {
+        allow: ['..']
+      }
     }
   }
 });
