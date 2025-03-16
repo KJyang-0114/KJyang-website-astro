@@ -1,4 +1,4 @@
-# KJYang 個人網站 - Astro 版本
+# KJyang 個人網站 - Astro 版本
 
 使用 Astro 框架建立的個人網站，具有高效能、輕量級和響應式設計特點。
 
